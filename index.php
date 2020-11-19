@@ -1,4 +1,19 @@
-<?php session_start();?>
+<?php session_start()
+
+function errFeedBack($field){
+
+  if(!empty($_SESSION)['err'][$field]){
+
+    foreach($_SESSION){
+
+    }
+
+  }
+
+}
+
+
+;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,32 +26,23 @@
 <div class="container mt-5">
   <form action="check.php" method="post" class="mx-auto">
       <ul class="list-group col-md-6 mx-auto">
-         <li class="list-group-item">
-         *帳號：<input type="text" name="acc">
-         <?php if(!empty($_SESSION['err']) && isset($_SESSION['err']['acc']['empty'])){ ;?><br>
-         <span style="color:red; font-size:12px">帳號不得為空</span>
-         <?php } ;?>
-         <?php if(!empty($_SESSION['err']) && isset($_SESSION['err']['acc']['len'])){ ;?><br>
-         <span style="color:red; font-size:12px">欄位長度不符(4-10)</span>
-         <?php } ;?>
+         <li class="list-group-item">*帳號：<input type="text" name="acc"><br>
+         <?php errFeedBack('acc');?>
          </li>
          
-         <li class="list-group-item">
-         *密碼：<input type="password" name="pw">
-         <?php if(!empty($_SESSION['err']) && isset($_SESSION['err']['pw']['empty'])){ ;?><br>
-         <span style="color:red; font-size:12px">密碼不得為空</span>
-         <?php } ;?>
-         <?php if(!empty($_SESSION['err']) && isset($_SESSION['err']['pw']['len'])){ ;?><br>
-         <span style="color:red; font-size:12px">欄位長度不符(8-16)</span>
-         <?php } ;?>
-         
+         <li class="list-group-item">*密碼：<input type="password" name="pw"><br>
+         <?php errFeedBack('pw');?>
          </li>
 
          <li class="list-group-item">姓名：<input type="text" name="name"></li>
          <li class="list-group-item">生日：<input type="date" name="birthday"></li>
          <li class="list-group-item">地址：<input type="text" name="addr"></li>
          <li class="list-group-item">電話：<input type="text" name="tel"></li>
+
          <li class="list-group-item">email：<input type="text" name="email"></li>
+         <?php errFeedBack('email');?>
+
+
       </ul>
 
     <div class="mx-auto" style="width:200px">
